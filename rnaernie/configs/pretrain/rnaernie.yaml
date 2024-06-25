@@ -1,0 +1,32 @@
+### model
+model_name_or_path: outputs/init_base
+
+### method
+stage: pt
+do_train: true
+
+### ddp
+ddp_timeout: 180000000
+
+### dataset
+dataset_name: data/rnacentral/loader.py
+tokenized_path: /data/tokenized/rnacentral
+max_seq_length: 2048
+overwrite_cache: false
+preprocessing_num_workers: 32
+do_group: false
+
+### output
+output_dir: outputs/p
+logging_steps: 100
+save_steps: 10_000
+plot_loss: true
+overwrite_output_dir: false
+
+### train
+per_device_train_batch_size: 50
+gradient_accumulation_steps: 1
+learning_rate: 0.0001
+num_train_epochs: 1.0
+lr_scheduler_type: cosine_with_min_lr
+lr_scheduler_kwargs: {min_lr: 0.00001}

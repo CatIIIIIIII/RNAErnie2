@@ -1,0 +1,30 @@
+### model
+model_name_or_path: /data/ckpt/wangning/RNAErnie/pretrain
+
+### method
+stage: infer
+do_train: false
+do_eval: true
+
+### ddp
+ddp_timeout: 180000000
+
+### dataset
+dataset_name: data/bprna/loader.py
+tokenized_path: data/tokenized/bprna
+max_seq_length: 2048
+overwrite_cache: false
+preprocessing_num_workers: 32
+dataloader_drop_last: false
+do_group: false
+validation_split_percentage: 100
+remove_unused_columns: false
+
+### output
+output_dir: outputs/inference/bprna
+logging_steps: 100
+save_steps: 10_000
+overwrite_output_dir: true
+
+### eval
+per_device_eval_batch_size: 200
